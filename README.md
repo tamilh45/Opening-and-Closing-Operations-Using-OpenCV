@@ -53,20 +53,105 @@ Create a structuring element (kernel) of suitable size.
 
 Compare the original, opened, and closed images.
 
-## Program
+
 
 ## Developed By
 
-**Name:** ____________________________
+### Name: Tamil Pavalan M       
+### Register No: 212223110058
 
-**Register No:** ______________________
+## Program
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+# Create a blank image
+image = np.zeros((500, 500, 3), dtype=np.uint8)
+# Add text on the image using cv2.putText
+font = cv2.FONT_HERSHEY_SIMPLEX
+cv2.putText(image, 'TAMIL PAVALAN', (100, 250), font, 1, (255, 255, 255), 2, cv2.LINE_AA)
+array([[[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]],
 
+       [[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]],
+
+       [[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]],
+
+       ...,
+
+       [[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]],
+
+       [[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]],
+
+       [[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        ...,
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]]], shape=(500, 500, 3), dtype=uint8)
+# Create a simple square kernel (3x3)
+kernel = np.ones((3, 3), np.uint8)
+# Display the input image
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB for displaying
+plt.title("Input Image with Text")
+plt.axis('off')
+(np.float64(-0.5), np.float64(499.5), np.float64(499.5), np.float64(-0.5))
+
+# Opening is erosion followed by dilation
+opened_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
+# Display the result of Opening
+plt.imshow(cv2.cvtColor(opened_image, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB
+plt.title("Opening Operation")
+plt.axis('off')
+(np.float64(-0.5), np.float64(499.5), np.float64(499.5), np.float64(-0.5))
+
+# Closing is dilation followed by erosion
+closed_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+# Display the result of Closing
+plt.imshow(cv2.cvtColor(closed_image, cv2.COLOR_BGR2RGB))
+plt.title("Closing Operation")
+plt.axis('off')
+plt.show()
+
+```
 ## Output
 
 ### Original Image
 
 - The input image is displayed.
 - The image serves as the source for morphological processing.
+
+<img width="389" height="410" alt="download" src="https://github.com/user-attachments/assets/fbabbf7e-f648-4968-877e-ff8f6bc73e9e" />
 
 ### Opening Operation
 
@@ -76,6 +161,8 @@ Compare the original, opened, and closed images.
 - Thin protrusions and isolated pixels are eliminated.
 - Object boundaries become smoother.
 
+<img width="389" height="410" alt="download" src="https://github.com/user-attachments/assets/c9134493-fd99-43d0-a634-28fad2b1fc45" />
+
 ### Closing Operation
 
 - Original image is displayed.
@@ -83,6 +170,8 @@ Compare the original, opened, and closed images.
 - Small holes and gaps inside objects are filled.
 - Broken regions are connected.
 - Object boundaries become more continuous.
+
+<img width="389" height="410" alt="download" src="https://github.com/user-attachments/assets/25ad567d-c8e7-4a04-909b-0a5f2b3c54c5" />
 
 ## Applications
 
